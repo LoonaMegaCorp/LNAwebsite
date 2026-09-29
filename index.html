@@ -3,276 +3,48 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#0b0909">
-  <title>LNA Website is being worked on. Stand by</title>
-  <style>
-    :root {
-      color-scheme: dark;
-      --text: #eee9e8;
-      --muted: #b5a8a9;
-      --accent: #cf303d;
-      --line: rgba(207, 48, 61, .48);
-    }
-
-    * { box-sizing: border-box; }
-
-    body {
-      min-height: 100vh;
-      margin: 0;
-      color: var(--text);
-      background: #0b0909;
-      font-family: Arial, Helvetica, sans-serif;
-    }
-
-    .wallpaper {
-      position: fixed;
-      z-index: -2;
-      inset: 0;
-      overflow: hidden;
-      background: #0b0909;
-    }
-
-    .slide {
-      position: absolute;
-      inset: 0;
-      background-position: center;
-      background-size: cover;
-      opacity: 0;
-      animation: dissolve 64s infinite;
-      transform: scale(1.025);
-    }
-
-    .slide:nth-child(1) {
-      background-image: url("https://images.steamusercontent.com/ugc/14667117368945920307/117C9A7458A0D1704ED50BCFFC2EE8B7CE39E954/?imw=1920&imh=1080&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true");
-      animation-delay: 0s;
-    }
-
-    .slide:nth-child(2) {
-      background-image: url("https://images.steamusercontent.com/ugc/10120636875176417208/9C78FC683CE42F5DCBD0311186B142D97FCD5B5B/?imw=1920&imh=1080&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true");
-      animation-delay: -8s;
-    }
-
-    .slide:nth-child(3) {
-      background-image: url("https://images.steamusercontent.com/ugc/9761584395244430361/AD464817C07FD38F5F8E4A33C86431F9985E13DB/?imw=1920&imh=1080&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true");
-      animation-delay: -16s;
-    }
-
-    .slide:nth-child(4) {
-      background-image: url("https://images.steamusercontent.com/ugc/17518565681509922692/D358D0668ECA9F8E7D17E121519767B43E87C74A/?imw=1920&imh=1080&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true");
-      animation-delay: -24s;
-    }
-
-    .slide:nth-child(5) {
-      background-image: url("https://images.steamusercontent.com/ugc/9371384131032991510/60D69A8AE216818CDB20AC0AA491A40310CB5EE4/?imw=1920&imh=1080&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true");
-      animation-delay: -32s;
-    }
-
-    .slide:nth-child(6) {
-      background-image: url("https://images.steamusercontent.com/ugc/17646642804610921491/0C5C3851AD135C61F1DC1C12F517BB1C9B884F8B/?imw=1920&imh=1080&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true");
-      animation-delay: -40s;
-    }
-
-    .slide:nth-child(7) {
-      background-image: url("https://images.steamusercontent.com/ugc/10294810328813524408/FFD1EA3381A7DA453DCAAF83CCC8C6FDFC8C785E/?imw=1920&imh=1080&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true");
-      animation-delay: -48s;
-    }
-
-    .slide:nth-child(8) {
-      background-image: url("https://images.steamusercontent.com/ugc/9439013996354624588/7A7802FB47B912461BDCB84D50B25A53E15CE82B/?imw=1920&imh=1080&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true");
-      animation-delay: -56s;
-    }
-
-    @keyframes dissolve {
-      0%, 9.5% { opacity: 1; }
-      12.5%, 100% { opacity: 0; }
-    }
-
-    .wallpaper::after {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(90deg, rgba(9, 5, 6, .94) 0%, rgba(9, 5, 6, .78) 48%, rgba(9, 5, 6, .38) 100%);
-      content: "";
-    }
-
-    body::before {
-      position: fixed;
-      z-index: -1;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(207, 48, 61, .10) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(207, 48, 61, .10) 1px, transparent 1px);
-      background-size: 40px 40px;
-      content: "";
-      pointer-events: none;
-    }
-
-    .frame {
-      width: min(100% - 48px, 1240px);
-      min-height: 100vh;
-      margin: 0 auto;
-      display: flex;
-      flex-direction: column;
-    }
-
-    header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      min-height: 78px;
-      border-bottom: 1px solid var(--line);
-    }
-
-    .identity {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-      font-size: .78rem;
-      font-weight: 700;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-    }
-
-    .seal {
-      display: grid;
-      width: 34px;
-      height: 34px;
-      place-items: center;
-      border: 1px solid var(--accent);
-      color: #f05b65;
-      font-size: .7rem;
-      letter-spacing: -.08em;
-    }
-
-    .header-note,
-    .section-label,
-    footer {
-      color: var(--muted);
-      font-family: "Courier New", Courier, monospace;
-      font-size: .68rem;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-    }
-
-    .header-note { text-align: right; }
-
-    main {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      padding: 10vh 0 12vh;
-    }
-
-    .primary {
-      max-width: 760px;
-      padding: clamp(24px, 4vw, 48px) 0 clamp(24px, 4vw, 48px) clamp(20px, 3vw, 36px);
-      border-left: 2px solid var(--accent);
-      background: linear-gradient(90deg, rgba(9, 5, 6, .68), rgba(9, 5, 6, 0));
-    }
-
-    .section-label {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin: 0 0 30px;
-    }
-
-    .section-label::before {
-      width: 26px;
-      height: 2px;
-      background: var(--accent);
-      content: "";
-    }
-
-    h1 {
-      max-width: 760px;
-      margin: 0;
-      font-size: clamp(3.2rem, 8vw, 7.8rem);
-      font-weight: 700;
-      line-height: .88;
-      letter-spacing: -.075em;
-      text-transform: uppercase;
-    }
-
-    h1 span { color: #e34550; }
-
-    .message {
-      max-width: 47ch;
-      margin: 34px 0 0;
-      color: #e1d9d8;
-      font-size: clamp(1rem, 1.5vw, 1.12rem);
-      line-height: 1.7;
-    }
-
-    footer {
-      display: flex;
-      justify-content: space-between;
-      gap: 20px;
-      padding: 20px 0 24px;
-      border-top: 1px solid var(--line);
-    }
-
-    footer a {
-      color: inherit;
-      text-decoration-color: var(--accent);
-      text-underline-offset: 4px;
-    }
-
-    footer a:hover { color: var(--text); }
-
-    @media (max-width: 720px) {
-      .frame { width: min(100% - 36px, 560px); }
-      header { min-height: 68px; }
-      .header-note { max-width: 125px; line-height: 1.5; }
-      main { padding: 12vh 0; }
-      h1 { font-size: clamp(3.1rem, 15vw, 6rem); }
-      .wallpaper::after {
-        background: linear-gradient(90deg, rgba(9, 5, 6, .88), rgba(9, 5, 6, .55));
-      }
-      footer { flex-direction: column; gap: 8px; }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .slide { animation: none; }
-      .slide:first-child { opacity: 1; }
-    }
-  </style>
+  <meta name="theme-color" content="#160d0f">
+  <meta name="description" content="LNA MegaCorp, YOUR favorite corporaton!">
+  <title>LNA MegaCorp</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+  <meta name="robots" content="index,follow">
+  <meta name="author" content="LNA MegaCorp">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="LNA MegaCorp">
+  <meta property="og:title" content="LNA MegaCorp">
+  <meta property="og:description" content="LNA MegaCorp, YOUR favorite corporaton!">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="LNA MegaCorp">
+  <meta name="twitter:description" content="LNA MegaCorp, YOUR favorite corporaton!">
+  <link rel="icon" href="assets/lna-logo.png" type="image/png">
 </head>
 <body>
-  <div class="wallpaper" aria-hidden="true">
-    <div class="slide"></div>
-    <div class="slide"></div>
-    <div class="slide"></div>
-    <div class="slide"></div>
-    <div class="slide"></div>
-    <div class="slide"></div>
-    <div class="slide"></div>
-    <div class="slide"></div>
-  </div>
-
-  <div class="frame">
-    <header>
-      <div class="identity">
-        <div class="seal" aria-hidden="true">LNA</div>
-        <span>LNA rahhh</span>
-      </div>
-      <div class="header-note">High Command stuff<br>S.E.D.</div>
-    </header>
-
-    <main>
-      <section class="primary">
-        <p class="section-label">Thing notice</p>
-        <h1>Under<br><span>Construction</span></h1>
-        <p class="message">
-          I am still making this corporate masterpiece.
-        </p>
-      </section>
-    </main>
-
-    <footer>
-      <span>Yes, LNA means Loona</span>
-      <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3289077650" target="_blank" rel="noreferrer">Workshop imagery: LNA MegaCorp collection</a>
-      <span>LNA High Command</span>
-    </footer>
-  </div>
+  <div class="announcement"><span class="live-dot"></span> PUBLIC NOTICE 08.27 <span>Orbital expansion enters phase IV</span><a href="assets.html">Read transmission <b>↗</b></a></div>
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="LNA MegaCorp home"><img class="brand-crest" src="assets/lna-logo.png" alt=""><span class="brand-mark">L<span>N</span>A</span><span class="brand-divider"></span><span class="brand-name">LNA MEGACORP<small>ADVANCING THE HUMAN FRONTIER</small></span></a>
+    <button class="menu-toggle" aria-label="Open navigation" aria-expanded="false"><i></i><i></i></button>
+    <nav class="main-nav" aria-label="Main navigation"><a class="active" href="index.html">Home</a><a href="history.html">Our history</a><a href="vehicles.html">Vehicles</a><a href="assets.html">Assets</a></nav>
+    <a class="nav-cta" href="assets.html">Investor relations <span>↗</span></a>
+  </header>
+  <main>
+    <section class="hero home-hero">
+      <div class="hero-grid"></div><div class="orbit orbit-a"></div><div class="orbit orbit-b"></div>
+      <div class="hero-content"><p class="eyebrow"><span>EST. LATE 2030</span> / EARTH · LOONA · BEYOND</p><h1>THE FUTURE,<br><em>UNDER CONTROL.</em></h1><p class="hero-copy">We don’t wait for tomorrow to arrive.<br>We build the systems that bring it here.</p><div class="hero-actions"><a class="button button-primary" href="history.html">Discover LNA <span>↗</span></a><a class="text-link" href="vehicles.html">Explore our fleet <span>→</span></a></div></div>
+      <div class="hero-stamp"><span>OUR MISSION</span><strong>HUMANITY<br>WITHOUT LIMITS.</strong><span class="stamp-line"></span><small>ONE FUTURE. BUILT TOGETHER.</small></div>
+      <div class="hero-footer"><span>SECTOR 01 — THE INNER SYSTEM</span><span class="scroll-cue">SCROLL TO EXPLORE <b>↓</b></span><span>LAT 00° 00' 00.0" N</span></div>
+      <div class="hero-index">01 <span>/ 04</span></div>
+    </section>
+    <section class="ticker" aria-label="Company statistics"><div class="ticker-track"><span>130+ YEARS OF PROGRESS</span><b>✳</b><span>ORBITAL PLATFORMS / LUNAR BASES</span><b>✳</b><span>LAND / AIR / SEA / SPACE</span><b>✳</b><span>ONE HUMAN FUTURE</span><b>✳</b><span>130+ YEARS OF PROGRESS</span><b>✳</b><span>ORBITAL PLATFORMS / LUNAR BASES</span><b>✳</b></div></section>
+    <section class="intro section-pad"><div class="section-kicker"><span>01 — A BETTER TOMORROW</span><span>THE LNA DIFFERENCE</span></div><div class="intro-grid"><h2>Progress is not<br>a <em>coincidence.</em></h2><div class="intro-body"><p>Every world-changing idea starts with a question: what if we could do more? For over eight decades, LNA has turned that question into infrastructure, exploration, and opportunity.</p><a class="under-link" href="history.html">A legacy in motion <span>↗</span></a></div></div><div class="principles"><article><span class="principle-no">01 / SEE FURTHER</span><h3>Frontier thinking</h3><p>We go where the map ends—and bring the next generation with us.</p><span class="principle-icon">⌖</span></article><article><span class="principle-no">02 / BUILD BETTER</span><h3>Purposeful engineering</h3><p>Built to work. Designed to last. Made for life beyond Earth.</p><span class="principle-icon">◈</span></article><article><span class="principle-no">03 / MOVE TOGETHER</span><h3>Shared progress</h3><p>Our greatest asset has always been the people behind the mission.</p><span class="principle-icon">✳</span></article></div></section>
+    <section class="feature-band"><div class="feature-art"><img class="system-map" src="assets/AeternaSystem.jpg" alt="LNA Aeterna system map"></div><div class="feature-copy"><p class="eyebrow">BUILT FOR WHAT’S NEXT</p><h2>A universe<br>of <em>possibility.</em></h2><p>From the deep infrastructure beneath our cities to the vessels charting new worlds, our work connects people to a bigger future.</p><a class="button button-outline" href="assets.html">See what we’re building <span>↗</span></a><span class="feature-coordinate">LNA DIVISION 04 — OFFWORLD OPERATIONS</span></div></section>
+    <section class="fleet-preview section-pad"><div class="section-kicker"><span>02 — ENGINEERED TO GO FURTHER</span><a href="vehicles.html">VIEW ALL VEHICLES ↗</a></div><div class="preview-heading"><h2>Tools for the <em>unknown.</em></h2><p>Purpose-built platforms for a civilization in motion.</p></div><div class="vehicle-cards"><a class="vehicle-card" href="vehicles.html"><div class="vehicle-visual shuttle"><span class="vehicle-code">TRANSPORT / 01</span><div class="ship ship-one"></div><span class="vehicle-visual-caption">ORBITAL CLASS</span></div><div class="card-meta"><span>01 / ARMOURED FIELD VEHICLE</span><span>↗</span></div><h3>Fennek <span>AFV</span></h3><p>A modular armoured platform for field operations.</p></a><a class="vehicle-card" href="vehicles.html"><div class="vehicle-visual rover"><span class="vehicle-code">SURFACE / 08</span><div class="ship ship-two"></div><span class="vehicle-visual-caption">ROVER SYSTEMS</span></div><div class="card-meta"><span>02 / LIGHT SPACECRAFT</span><span>↗</span></div><h3>LSF Spectre</h3><p>Compact spacecraft built for rapid response.</p></a><a class="vehicle-card" href="vehicles.html"><div class="vehicle-visual hauler"><span class="vehicle-code">INDUSTRIAL / 12</span><div class="ship ship-three"></div><span class="vehicle-visual-caption">HEAVY LIFT</span></div><div class="card-meta"><span>03 / HEAVY LOGISTICS</span><span>↗</span></div><h3>Atlas-M <span>6×6</span></h3><p>Heavy transport for the infrastructure behind the mission.</p></a></div></section>
+    <section class="quote-band"><span class="quote-mark">“</span><blockquote>Our trade lines are strong.<br><em>Our fleet is ready.</em></blockquote><span class="quote-credit">THE LNA MEGACORP / WORKSHOP DECLARATION</span></section>
+    <section class="cta-strip"><div><p class="eyebrow">THE NEXT CHAPTER IS OURS TO WRITE</p><h2>There’s room for <em>more.</em></h2></div><a class="button button-primary" href="history.html">Get to know LNA <span>↗</span></a></section>
+  </main>
+  <footer class="site-footer"><a class="brand footer-brand" href="index.html"><img class="brand-crest" src="assets/lna-logo.png" alt=""><span class="brand-mark">L<span>N</span>A</span><span class="brand-divider"></span><span class="brand-name">LNA MEGACORP<small>ADVANCING THE HUMAN FRONTIER</small></span></a><div class="footer-mission">THE FUTURE IS A<br>SHARED RESPONSIBILITY.</div><div class="footer-links"><a href="history.html">History</a><a href="vehicles.html">Vehicles</a><a href="assets.html">Assets &amp; news</a><a href="mailto:contact@lna.megacorp">Contact</a></div><div class="footer-bottom"><span>© 2168 LNA MEGACORP. ALL RIGHTS RESERVED.</span><span>BUILT FOR THE LONG VIEW. <b>✳</b></span><a href="#top">BACK TO TOP ↑</a></div></footer>
 </body>
 </html>
