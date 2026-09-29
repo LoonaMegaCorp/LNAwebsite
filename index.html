@@ -8,13 +8,10 @@
   <style>
     :root {
       color-scheme: dark;
-      --background: #0b0909;
-      --surface: #110d0e;
       --text: #eee9e8;
-      --muted: #9b8f90;
-      --accent: #bd2633;
-      --line: #382326;
-      --grid: rgba(190, 47, 59, .075);
+      --muted: #b5a8a9;
+      --accent: #cf303d;
+      --line: rgba(207, 48, 61, .48);
     }
 
     * { box-sizing: border-box; }
@@ -23,12 +20,90 @@
       min-height: 100vh;
       margin: 0;
       color: var(--text);
-      background-color: var(--background);
-      background-image:
-        linear-gradient(var(--grid) 1px, transparent 1px),
-        linear-gradient(90deg, var(--grid) 1px, transparent 1px);
-      background-size: 40px 40px;
+      background: #0b0909;
       font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .wallpaper {
+      position: fixed;
+      z-index: -2;
+      inset: 0;
+      overflow: hidden;
+      background: #0b0909;
+    }
+
+    .slide {
+      position: absolute;
+      inset: 0;
+      background-position: center;
+      background-size: cover;
+      opacity: 0;
+      animation: dissolve 64s infinite;
+      transform: scale(1.025);
+    }
+
+    .slide:nth-child(1) {
+      background-image: url("https://images.steamusercontent.com/ugc/14667117368945920307/117C9A7458A0D1704ED50BCFFC2EE8B7CE39E954/?imw=1920&imh=1080&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true");
+      animation-delay: 0s;
+    }
+
+    .slide:nth-child(2) {
+      background-image: url("https://images.steamusercontent.com/ugc/10120636875176417208/9C78FC683CE42F5DCBD0311186B142D97FCD5B5B/?imw=1920&imh=1080&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true");
+      animation-delay: -8s;
+    }
+
+    .slide:nth-child(3) {
+      background-image: url("https://images.steamusercontent.com/ugc/9761584395244430361/AD464817C07FD38F5F8E4A33C86431F9985E13DB/?imw=1920&imh=1080&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true");
+      animation-delay: -16s;
+    }
+
+    .slide:nth-child(4) {
+      background-image: url("https://images.steamusercontent.com/ugc/17518565681509922692/D358D0668ECA9F8E7D17E121519767B43E87C74A/?imw=1920&imh=1080&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true");
+      animation-delay: -24s;
+    }
+
+    .slide:nth-child(5) {
+      background-image: url("https://images.steamusercontent.com/ugc/9371384131032991510/60D69A8AE216818CDB20AC0AA491A40310CB5EE4/?imw=1920&imh=1080&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true");
+      animation-delay: -32s;
+    }
+
+    .slide:nth-child(6) {
+      background-image: url("https://images.steamusercontent.com/ugc/17646642804610921491/0C5C3851AD135C61F1DC1C12F517BB1C9B884F8B/?imw=1920&imh=1080&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true");
+      animation-delay: -40s;
+    }
+
+    .slide:nth-child(7) {
+      background-image: url("https://images.steamusercontent.com/ugc/10294810328813524408/FFD1EA3381A7DA453DCAAF83CCC8C6FDFC8C785E/?imw=1920&imh=1080&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true");
+      animation-delay: -48s;
+    }
+
+    .slide:nth-child(8) {
+      background-image: url("https://images.steamusercontent.com/ugc/9439013996354624588/7A7802FB47B912461BDCB84D50B25A53E15CE82B/?imw=1920&imh=1080&ima=fit&impolicy=Letterbox&imcolor=%23000000&letterbox=true");
+      animation-delay: -56s;
+    }
+
+    @keyframes dissolve {
+      0%, 9.5% { opacity: 1; }
+      12.5%, 100% { opacity: 0; }
+    }
+
+    .wallpaper::after {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(9, 5, 6, .94) 0%, rgba(9, 5, 6, .78) 48%, rgba(9, 5, 6, .38) 100%);
+      content: "";
+    }
+
+    body::before {
+      position: fixed;
+      z-index: -1;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(207, 48, 61, .10) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(207, 48, 61, .10) 1px, transparent 1px);
+      background-size: 40px 40px;
+      content: "";
+      pointer-events: none;
     }
 
     .frame {
@@ -63,14 +138,13 @@
       height: 34px;
       place-items: center;
       border: 1px solid var(--accent);
-      color: var(--accent);
+      color: #f05b65;
       font-size: .7rem;
       letter-spacing: -.08em;
     }
 
     .header-note,
     .section-label,
-    .index,
     footer {
       color: var(--muted);
       font-family: "Courier New", Courier, monospace;
@@ -83,15 +157,16 @@
 
     main {
       flex: 1;
-      display: grid;
-      grid-template-columns: minmax(0, 1.35fr) minmax(250px, .65fr);
+      display: flex;
       align-items: center;
-      gap: clamp(48px, 9vw, 144px);
       padding: 10vh 0 12vh;
     }
 
     .primary {
       max-width: 760px;
+      padding: clamp(24px, 4vw, 48px) 0 clamp(24px, 4vw, 48px) clamp(20px, 3vw, 36px);
+      border-left: 2px solid var(--accent);
+      background: linear-gradient(90deg, rgba(9, 5, 6, .68), rgba(9, 5, 6, 0));
     }
 
     .section-label {
@@ -118,38 +193,15 @@
       text-transform: uppercase;
     }
 
-    h1 span { color: var(--accent); }
+    h1 span { color: #e34550; }
 
     .message {
       max-width: 47ch;
       margin: 34px 0 0;
-      color: #c9c0bf;
+      color: #e1d9d8;
       font-size: clamp(1rem, 1.5vw, 1.12rem);
       line-height: 1.7;
     }
-
-    .details {
-      align-self: end;
-      margin-bottom: 4px;
-      border-top: 2px solid var(--accent);
-      background: rgba(17, 13, 14, .82);
-    }
-
-    .detail-row {
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 16px;
-      padding: 15px 0;
-      border-bottom: 1px solid var(--line);
-      font-family: "Courier New", Courier, monospace;
-      font-size: .72rem;
-      letter-spacing: .06em;
-      text-transform: uppercase;
-    }
-
-    .detail-row span:first-child { color: var(--muted); }
-    .detail-row span:last-child { color: var(--text); text-align: right; }
-    .detail-row .red { color: #e04a56 !important; }
 
     footer {
       display: flex;
@@ -159,52 +211,66 @@
       border-top: 1px solid var(--line);
     }
 
+    footer a {
+      color: inherit;
+      text-decoration-color: var(--accent);
+      text-underline-offset: 4px;
+    }
+
+    footer a:hover { color: var(--text); }
+
     @media (max-width: 720px) {
       .frame { width: min(100% - 36px, 560px); }
       header { min-height: 68px; }
       .header-note { max-width: 125px; line-height: 1.5; }
-      main {
-        grid-template-columns: 1fr;
-        gap: 52px;
-        align-content: center;
-        padding: 12vh 0;
-      }
+      main { padding: 12vh 0; }
       h1 { font-size: clamp(3.1rem, 15vw, 6rem); }
-      .details { width: 100%; }
+      .wallpaper::after {
+        background: linear-gradient(90deg, rgba(9, 5, 6, .88), rgba(9, 5, 6, .55));
+      }
       footer { flex-direction: column; gap: 8px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .slide { animation: none; }
+      .slide:first-child { opacity: 1; }
     }
   </style>
 </head>
 <body>
+  <div class="wallpaper" aria-hidden="true">
+    <div class="slide"></div>
+    <div class="slide"></div>
+    <div class="slide"></div>
+    <div class="slide"></div>
+    <div class="slide"></div>
+    <div class="slide"></div>
+    <div class="slide"></div>
+    <div class="slide"></div>
+  </div>
+
   <div class="frame">
     <header>
       <div class="identity">
         <div class="seal" aria-hidden="true">LNA</div>
         <span>LNA rahhh</span>
       </div>
-      <div class="header-note">High Command stuff<br>Public information channel</div>
+      <div class="header-note">High Command stuff<br>S.E.D.</div>
     </header>
 
     <main>
       <section class="primary">
-        <p class="section-label">Facility notice / 01</p>
+        <p class="section-label">Thing notice</p>
         <h1>Under<br><span>Construction</span></h1>
         <p class="message">
-          This facility is undergoing scheduled reconstruction.
-          All assets are advised to stand by. Public access will be restored
-          when systems have reached operational compliance.
+          I am still making this corporate masterpiece.
         </p>
       </section>
-
-      <aside class="details" aria-label="Facility status">
-        <div class="detail-row"><span>Channel</span><span>High Command</span></div>
-        <div class="detail-row"><span>Current status</span><span class="red">Tutututututut</span></div>
-        <div class="detail-row"><span>Public access</span><span>Stand by</span></div>
-      </aside>
     </main>
 
     <footer>
       <span>Yes, LNA means Loona</span>
+      <a href="https://steamcommunity.com/sharedfiles/filedetails/?id=3289077650" target="_blank" rel="noreferrer">Workshop imagery: LNA MegaCorp collection</a>
       <span>LNA High Command</span>
     </footer>
   </div>
