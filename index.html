@@ -3,17 +3,17 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#101211">
+  <meta name="theme-color" content="#090506">
   <title>LNA Website is being worked on. Stand by</title>
   <style>
     :root {
       color-scheme: dark;
-      --background: #121010;
-      --panel: hsl(0, 8%, 10%);
-      --text: #e9e4e4;
-      --muted: #aaa1a1;
-      --accent: #d96b6b;
-      --line: #413838;
+      --background: #090506;
+      --panel: #18090c;
+      --text: #f1e8e9;
+      --muted: #ad9296;
+      --accent: #e32636;
+      --line: #57202a;
     }
 
     * { box-sizing: border-box; }
@@ -25,20 +25,36 @@
       place-items: center;
       padding: 24px;
       background:
-        linear-gradient(rgba(217, 107, 107, 0.035) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(217, 107, 107, 0.035) 1px, transparent 1px),
+        radial-gradient(ellipse at 50% 45%, rgba(111, 9, 22, .24), transparent 58%),
+        linear-gradient(rgba(227, 38, 54, .055) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(227, 38, 54, .055) 1px, transparent 1px),
         var(--background);
-      background-size: 36px 36px;
+      background-size: auto, 32px 32px, 32px 32px, auto;
       color: var(--text);
       font-family: "Courier New", Courier, monospace;
     }
 
     main {
+      position: relative;
+      overflow: hidden;
       width: min(100%, 680px);
       padding: clamp(28px, 7vw, 64px);
       border: 1px solid var(--line);
-      background: rgba(28, 24, 24, 0.96);
-      box-shadow: 0 24px 80px rgba(0, 0, 0, .38);
+      border-left: 4px solid var(--accent);
+      background: linear-gradient(145deg, rgba(34, 12, 16, .98), rgba(15, 7, 9, .98));
+      box-shadow: 0 24px 80px rgba(0, 0, 0, .6), 0 0 42px rgba(118, 9, 24, .12);
+    }
+
+    main::after {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 92px;
+      height: 92px;
+      border-top: 1px solid rgba(227, 38, 54, .52);
+      border-right: 1px solid rgba(227, 38, 54, .52);
+      content: "";
+      pointer-events: none;
     }
 
     .classification {
@@ -46,7 +62,8 @@
       margin-bottom: 42px;
       padding: 7px 10px;
       border: 1px solid var(--accent);
-      color: var(--accent);
+      background: rgba(123, 12, 27, .22);
+      color: #ff5965;
       font-size: .72rem;
       letter-spacing: .16em;
       text-transform: uppercase;
@@ -70,10 +87,10 @@
     }
 
     .rule {
-      height: 1px;
+      height: 2px;
       margin: 30px 0;
       border: 0;
-      background: var(--line);
+      background: linear-gradient(90deg, var(--accent), var(--line) 68%, transparent);
     }
 
     .message {
@@ -96,17 +113,17 @@
     }
 
     .status::before {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
+      width: 9px;
+      height: 9px;
+      border-radius: 0;
       background: var(--accent);
-      box-shadow: 0 0 12px rgba(217, 107, 107, 0.65);
+      box-shadow: 0 0 12px rgba(227, 38, 54, .72);
       content: "";
     }
 
     footer {
       margin-top: 48px;
-      color: #7a7272;
+      color: #87646a;
       font-size: .68rem;
       letter-spacing: .12em;
       text-transform: uppercase;
